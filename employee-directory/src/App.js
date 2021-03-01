@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./components/Footer";
 import Jumbotron from "./components/Jumbotron";
 import SearchBar from "./components/SearchBar";
-// import SearchResults from "./components/SearchResults";
+import SearchResults from "./components/SearchResults";
 import Wrapper from "./components/Wrapper";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
             <Jumbotron />
             <Wrapper>
                 <SearchBar />
-                {/* <SearchResults /> */}
+                <SearchResults />
             </Wrapper>
             <Footer />
         </div>
