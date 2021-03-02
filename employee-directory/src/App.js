@@ -10,7 +10,6 @@ function App() {
         <div>
             <Jumbotron />
             <Wrapper>
-                <SearchBar />
                 <SearchResults />
             </Wrapper>
             <Footer />
