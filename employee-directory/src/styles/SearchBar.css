@@ -1,0 +1,9 @@
+.input-group {
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-width: 850px;
+}
+.form-control {
+    border: solid 2px #3C9339 !important;
+}

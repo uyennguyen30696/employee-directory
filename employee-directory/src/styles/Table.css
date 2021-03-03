@@ -1,0 +1,24 @@
+img {
+    border-radius: 30px;
+}
+.table-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+.table-head {
+    color: #245823;
+}
+.dropdown-toggle {
+    border-color: #245823 !important;
+    font-weight: bold !important;
+    color: #245823 !important;
+}
+.table-row:hover {
+    box-shadow: 0px 0px 15px 0px #3A5E29;
+    transform: scale(1.01);
+}
+#image-title {
+    padding-left: 0;
+    padding-right: 0;
+}

@@ -10,7 +10,8 @@ function SearchBar(props) {
             aria-label="Search" 
             aria-describedby="button-addon2"
             value={props.search}
-            onChange={props.handleInputChange} />
+            onChange={props.handleInputChange} 
+            />
         </div>
     );
 };

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import SearchBar from "./SearchBar";
 import Table from "./Table";
-import "../styles/SearchResults.css";
 
 class Search extends Component {
 

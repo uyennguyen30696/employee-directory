@@ -1,0 +1,15 @@
+.jumbotron {
+    position: relative;
+    width: 100% !important;
+    min-width: 860px;
+    background: linear-gradient(#122D11, #2F762D);
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+}
+h1 {
+    font-size: 3em !important;
+}
+p {
+    font-size: 1.3em !important;
+}
