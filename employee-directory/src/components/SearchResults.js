@@ -11,8 +11,8 @@ class Search extends Component {
         results: []
     };
 
-    // API call for randomuser.me
     componentDidMount() {
+        // API call for randomuser.me
         API.search()
             .then(res => {
                 console.log(res);
@@ -35,46 +35,10 @@ class Search extends Component {
                     handleSubmitChange={this.handleSubmitChange}
                 />
 
-                <table className="table text-center table-striped table-hover">
-                    <thead className="table-dark">
-                        <tr>
-                            <th scope="col">Image</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">DOB</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.results.map(employee => {
-                            if (employee.name.first.toLowerCase().includes(this.state.search.toLowerCase()) && this.state.search !== "") {
-                                return (
-                                    <tr key={employee.login.uuid}>
-                                        <th scope="row"><img src={employee.picture.thumbnail} alt="Employee picture" /></th>
-                                        <td>{employee.name.first}</td>
-                                        <td>{employee.name.last}</td>
-                                        <td>{employee.phone}</td>
-                                        <td>{employee.email}</td>
-                                        <td>{employee.dob.date.substring(0, 10)}</td>
-                                    </tr>
-                                )
-                            } else if (this.state.search === "") {
-                                return (
-                                    <tr key={employee.login.uuid}>
-                                        <th scope="row"><img src={employee.picture.thumbnail} alt="Employee picture" /></th>
-                                        <td>{employee.name.first}</td>
-                                        <td>{employee.name.last}</td>
-                                        <td>{employee.phone}</td>
-                                        <td>{employee.email}</td>
-                                        <td>{employee.dob.date.substring(0, 10)}</td>
-                                    </tr>
-                                )
-                            }
-                        })
-                        }
-                    </tbody>
-                </table>
+                <Table
+                    results={this.state.results}
+                    search={this.state.search}
+                />
             </div>
         );
     };

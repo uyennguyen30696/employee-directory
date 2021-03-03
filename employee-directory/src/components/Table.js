@@ -1,7 +1,20 @@
 import React from "react";
-import API from "../utils/API";
-import SearchBar from "./SearchBar";
 import "../styles/Table.css";
+import DateFormat from 'dateformat';
+
+// Reformat phone number to (123) 456-789 format if having 10 digits
+function formatPhoneNumber(phoneNumber) {
+    let clean = phoneNumber.replace(/\D/g, "");
+    let tenDigits = clean.match(/(\d{3})(\d{3})(\d{4})/);
+    let eightDigits = clean.match(/(\d{2})(\d{3})(\d{3})/);
+    if (tenDigits) {
+        return clean.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+    } else if (eightDigits) {
+        return clean.replace(/(\d{2})(\d{3})(\d{3})/, "$1-$2-$3");
+    } else {
+        return phoneNumber;
+    };
+};
 
 function Table(props) {
     return (
@@ -16,16 +29,33 @@ function Table(props) {
                     <th scope="col">DOB</th>
                 </tr>
             </thead>
-            
+
             <tbody>
-                <tr key={props.children}>
-                    <th scope="row">{props.children}</th>
-                    <td>{props.children}</td>
-                    <td>{props.children}</td>
-                    <td>{props.children}</td>
-                    <td>{props.children}</td>
-                    <td>{props.children}</td>
-                </tr>
+                {props.results.map(employee => {
+                    if (employee.name.first.toLowerCase().includes(props.search.toLowerCase()) && props.search !== "") {
+                        return (
+                            <tr key={employee.login.uuid}>
+                                <th scope="row"><img src={employee.picture.thumbnail} alt="Employee picture" /></th>
+                                <td>{employee.name.first}</td>
+                                <td>{employee.name.last}</td>
+                                <td>{formatPhoneNumber(employee.phone)}</td>
+                                <td>{employee.email}</td>
+                                <td>{employee.dob.date.substring(0, 10)}</td>
+                            </tr>
+                        )
+                    } else if (props.search === "") {
+                        return (
+                            <tr key={employee.login.uuid}>
+                                <th scope="row"><img src={employee.picture.thumbnail} alt="Employee picture" /></th>
+                                <td>{employee.name.first}</td>
+                                <td>{employee.name.last}</td>
+                                <td>{formatPhoneNumber(employee.phone)}</td>
+                                <td>{employee.email}</td>
+                                <td>{DateFormat(employee.dob.date.substring(0, 10), "mmmm dS, yyyy")}</td>
+                            </tr>
+                        )
+                    }
+                })}
             </tbody>
         </table>
     );
