@@ -3,6 +3,7 @@ import "../styles/Table.css";
 import DateFormat from 'dateformat';
 
 // Reformat phone number to (123) 456-789 format if having 10 digits
+// Reformat phone number t0 12-345-678 format if having 8 digits
 function formatPhoneNumber(phoneNumber) {
     let clean = phoneNumber.replace(/\D/g, "");
     let tenDigits = clean.match(/(\d{3})(\d{3})(\d{4})/);
@@ -19,11 +20,21 @@ function formatPhoneNumber(phoneNumber) {
 function Table(props) {
     return (
         <table className="table text-center table-striped table-hover">
-            <thead className="table-dark">
+            <thead>
                 <tr>
                     <th scope="col">Image</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
+                    <th scope="col">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                        onClick={props.sortByFirstName}>
+                        First Name
+                        </button>
+                    </th>
+                    <th scope="col">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                        onClick={props.sortByLastName}>
+                        Last Name
+                        </button>
+                    </th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">DOB</th>
@@ -32,7 +43,9 @@ function Table(props) {
 
             <tbody>
                 {props.results.map(employee => {
-                    if (employee.name.first.toLowerCase().includes(props.search.toLowerCase()) && props.search !== "") {
+                    if (employee.name.first.toLowerCase().includes(props.search.toLowerCase()) 
+                        || employee.name.last.toLowerCase().includes(props.search.toLowerCase())
+                        && props.search !== "") {
                         return (
                             <tr key={employee.login.uuid}>
                                 <th scope="row"><img src={employee.picture.thumbnail} alt="Employee picture" /></th>
