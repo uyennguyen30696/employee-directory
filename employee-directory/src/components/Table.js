@@ -53,7 +53,7 @@ function Table(props) {
                                 <td>{employee.name.last}</td>
                                 <td>{formatPhoneNumber(employee.phone)}</td>
                                 <td>{employee.email}</td>
-                                <td>{employee.dob.date.substring(0, 10)}</td>
+                                <td>{DateFormat(employee.dob.date.substring(0, 10), "mmmm dS, yyyy")}</td>
                             </tr>
                         )
                     } else if (props.search === "") {
