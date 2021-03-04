@@ -2,7 +2,7 @@
 
 ## Description
 
-Check out the deployed application [here]().
+Check out the deployed application [here](https://uyennguyen30696.github.io/employee-directory/).
 
 This is a single page web application created with [React](https://reactjs.org/), which allows users to view non-sensitive data from the entire employee directory at once. The application's UI is broken up into reusable components, managed by component state, and responds to user events. The random demo employee data appearing in this application are generated from [randomuser.me API](https://randomuser.me/).
 
