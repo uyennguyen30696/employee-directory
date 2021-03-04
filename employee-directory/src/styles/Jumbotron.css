@@ -1,5 +1,6 @@
 .jumbotron {
     position: relative;
+    padding: 30px !important;
     width: 100% !important;
     min-width: 860px;
     background: linear-gradient(#122D11, #2F762D);

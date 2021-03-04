@@ -47,7 +47,6 @@ function Table(props) {
                     <th scope="col"><span>DOB <FontAwesomeIcon icon={faBirthdayCake} /></span></th>
                 </tr>
             </thead>
-
             <tbody>
                 {props.results.map(employee => {
                     if (employee.name.first.toLowerCase().includes(props.search.toLowerCase()) 
